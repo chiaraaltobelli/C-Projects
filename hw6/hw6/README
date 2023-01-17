@@ -1,0 +1,67 @@
+Chiara Altobelli
+Homework 6 – Copycats
+CS 253
+November 18, 2022
+
+Purpose:
+This program reads in optional category name and character combinations from the command line and creates a list of categories that the user can then test input against. List “cc1” contains the built in categories and list “cc2” contains the user added categories. The input can be entered via an input file or via the command line. When input is read from a file, the program will test each line until it reaches the end of the file. If the input is entered via the command line, the program will continue taking input until the user hits CTRL-D or enter. The program counts all matches between the string(s) entered and the characters in each category. The output can be printed to a file or to the command line.
+
+To Run, use the format:
+Specified input and output files:
+./hw6 <input file> <output file> <category> <characters> <category> <characters>…
+Input/output from the command line:
+./hw6 - - <category> <characters> <category> <characters>...
+
+Rules:
+Input: The user can read input from an input file or enter input via the command line to test for matches for each category. 
+To read input from a file, specify the file name:     ./hw6 myFile outputFile vowels aeiou digits 0-9
+To enter input via the command line, use ‘-’:    ./hw6 – outputFile vowels aeiou digits 0-9
+Output: The user can write output for the category counts to an output file or to the command line. 
+To write output to a file, specify the file name:     ./hw6 myFile outputFile vowels aeiou digits 0-9
+To output counts to the command line, use ‘-’:    ./hw6 myFile - vowels aeiou digits 0-9
+A user can both input and output to the command line with:    ./hw6 - - vowels aeiou digits 0-9
+Categories: There are 4 built in categories entered in the main: Lower_Vowels, Lowercase_Consonants, Letters, and Punctuation. Additional categories are optional. The user can enter as many categories as they want via the command line when running the program. The user must enter a category name and a list of characters for each category. If an invalid amount of arguments are entered (ie category specified, but characters are not), the program will provide an error message and exit. 
+Case Folding: The user can specify to include upper and lower case in a category by starting the character specification with ‘^’. If ‘^’ is not the first character in the category, the program will count it as a normal character and will not assume the user wants to include upper- and lower-case characters.
+Ranges: If the user wants to include a range, such as A through Z or 0 through 9, they can use a ‘-‘ to indicate this: a-z, 0-9, etc. Multiple ranges can be entered and should be on one line, with no spaces or commas in the format of: ‘a-z0-9’. A user can combine case folding and ranges, but must indicate case folding first. For example: ‘^a-z’ will return the upper and lower case ranges for a-z. A user cannot use ‘-‘ as the first or last character if they wish to include a range in the category. When entered as the first or last character of a category, ‘-‘ will be counted as a character and will not indicate a range.
+
+Makefiles:
+The user can use “make” which calls GNUmakefile. 
+
+Files:
+This program includes the following files:
+    • Hw6: (this is the main), 
+        ◦ Initiates built in categories of Chrcat and adds them to a list “cc1”
+        ◦ Takes the categories entered via command line arguments and adds to a new list of Chrcats called “cc2”
+        ◦ Allows the user to enter characters to the command line to compare to categories until they exit via CTRL-D or enter, or to read input lines from the specified input file
+        ◦ Calls print function upon completion to print all categories and count information
+            ▪ User can print to a specified output file or use ‘-’ when running program to print to the command line
+        ◦ Frees memory
+    • ChrCats.c: 
+        ◦ This file creates a list of Chrcats based on the built in categories and the user categories
+        ◦ Works with Chrcat.c to create a single instance of a Chrcat, then adds it to the list in Chrcats.c
+    • ChrCats.h: 
+        ◦ This file is visible from hw5.c and ChrCats.c and defines all extern methods
+        ◦ Includes tydef void* Chrcats that is used from main to create cc1 and cc2
+    • Chrcat.c
+        ◦ This file creates a single instance of a chrcat and includes all of the code to do counts, get the characters, etc.
+        ◦ Visible from Chrcats.c
+    • Chrcat.h
+        ◦ This file creates the struct of name, characters, and count and the useful functions including:
+            ▪ getCharacters
+            ▪ countMatch
+            ▪ printString
+    • Utilities.c, Utilities.h, List.c, List.h, error.h
+        ◦ Utilities contains generic methods that can be reused for other programs, including:
+            ▪ getInput (returns user entered input and length of the input entered)
+            ▪ mallocError (provides error message if malloc fails)
+            ▪ getLength (returns the length of a string)
+            ▪ toLower (converts a character to lower case)
+        ◦ List contains the struct Pair to create a list as well as these functions:
+            ▪ Cons (concatenates a list of items)
+            ▪ Car (returns the first item in the list)
+            ▪ Cdr (advances to the next item in the list)
+            ▪ FreeList (frees the list container(
+            ▪ Freedata (frees the data from the list)
+        ◦ Error
+            ▪ WARN (allows warnings that are shown to the user)
+            ▪ ERROR (allows errors that will exit the program)

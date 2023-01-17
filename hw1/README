@@ -1,0 +1,24 @@
+Chiara Altobelli
+CS 253
+Homework 1 - Vowel Count Program
+September 6, 2022
+
+This program takes characters entered to a constant array (vowels) and data entered by the user (line) and determines if the characters are uppercase or lowercase and counts up all of the vowels.
+
+This program takes the following input:
+Constant array called vowels that is hardcoded into program: const char vowels[]="aeiou"
+User entered values from getline stored to line
+
+The following functions are included:
+-isLower: Checks if the constant array (vowels) is uppercase or lowercase. If uppercase, will return false to the main and display the message "Value of constant array is not in lowercase format: (value of vowels)".
+-checkVowel: Checks if the constant array (vowels) contains uppercase or lowercase vowels including a, e, i, o, u, y, A, E, I, O, U, Y and counts all occurrences of vowels.
+-convertToLower: Checks if the user entered data (line) is uppercase and if so, converts all entries to lowercase.
+-checkUserVowel: Checks if the user entered data (line) contains lowercase vowels (converted in function convertToLower) a, e, i, o, u, y and counts all occurrences of vowels.
+
+The following information is output:
+The value of the constant array (vowels)
+The number of vowels in the constant array (vowels)
+The value of the user entry (line)
+The number of vowels entered by the user (line)
+
+

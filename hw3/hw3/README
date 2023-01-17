@@ -1,0 +1,20 @@
+Chiara Altobelli
+Homework 3 – It’s Not My De(fault)
+CS 253
+October 12, 2022
+
+Purpose: This program reads in category name and character combinations from the command line and creates a list of categories that the user can then test string input against. The program counts all matches between the string entered and the characters in each category.
+
+Rules
+Categories: The user can enter a maximum number of categories as defined by MAXCAT in the chrcats.h file. The default is currently set to 10. There are 3 built in categories entered in the main which are included in the MAXCATS limit: Lower_Vowels, Lowercase_Consonants, and Letters. This allows the user to enter an additional 7 arguments through the command line. If the user enters more than 7, they will receive a warning and only the 7 arguments will be added. The user must enter a category name and a list of characters for each category. If too few arguments are entered (no categories added, characters entered without a category name, or a category name entered but no characters), the program will provide and error message and exit. The maximum number of characters allowed for each category is set by BUFFER and is by default set to 1000.
+Case Folding: The user can specify to include upper and lower case in a category by starting the character specification with ‘^’. If ‘^’ is not the first character in the category, the program will count it as a normal character and will not assume the user wants to include upper- and lower-case characters.
+Ranges: If the user wants to include a range, such as A through Z or 0 through 9, they can use a ‘-‘ to indicate this: a-z, 0-9, etc. Multiple ranges can be entered and should be on one line, with no spaces or commas in the format of: ‘a-z0-9’. A user can combine case folding and ranges, but must indicate case folding first. For example: ‘^a-z’ will return the upper and lower case ranges for a-z.
+
+Makefiles:
+The user should run Makefile which calls GNUmakefile. To run this makefile, specify on the command line: make -f Makefile.
+
+Files:
+This program includes the following files:
+Inmd3.c: This is the main, which initiates three built in structs and gets the categories from the command line and asks the user for input/
+Chrcats3.c: This is where the bulk of the code is. This file takes input from the main, creates a chrcatRep struct and compares the user input to all of the categories, and counts up the matches.
+ChrCat3.h: This file is visible from inmd3.c and chrcats3.c and defines MAXCATS (max categories allowed) and BUFFER (max characters allowed).

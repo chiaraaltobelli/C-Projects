@@ -1,0 +1,36 @@
+Chiara Altobelli
+CS 253
+Homework 2 - The Static Quo
+September 28, 2022
+
+This program takes a line of input entered by the user and compares each character to an element of an array of structs with different categories.
+The categories include: vowels, consonants, lower, upper, digits, letter, punctuation, ascenders, descenders, curvy, and sticky.
+It compares each user entered character to each character in each element in the array of structs.
+The program then counts total matches for each array element. The output is each category, the characters it contains, and the total number of matches.
+
+This program takes the following input:
+User entered value from getline stored to getInput.
+
+The following files are included:
+-sq.c (main)
+-charcat.c
+-ChrCat.h
+-GNUmakefile
+
+The following functions are included:
+sq.c: 
+-static char *getstr: prompts the user to enter input, gets the input and the length of the input
+
+charcat.c:
+void testCategories: This is the only function available from the main (sq.c). This function creates an array to hold total category counts and calls the other functions to 
+get length of array elements, check for matches, and convert the output to string.
+static void categoryLength: Gets the length of each element in the array.
+static void totalMatch: Checks to see if the user input character matches the character from the array element and counts the matches.
+static char *chrcatToString: For each element in the array of structs, converts to string so the output can be printed.
+
+The following information is output:
+Category name and characters it contains
+Totals for each category
+
+
+

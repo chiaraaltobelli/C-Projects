@@ -1,0 +1,53 @@
+Chiara Altobelli
+Homework 5 – The Object of My Affection
+CS 253
+November 16, 2022
+
+Purpose:
+This program reads in category name and character combinations from the command line and creates a list of categories that the user can then test string input against. List “cc1” contains the built in categories and list “cc2” contains the user added categories. The string input is entered to the command line until the user exits via CTRL-D or enter. The program counts all matches between the string(s) entered and the characters in each category.
+
+Rules:
+Categories: The user can enter as many categories as they want via the command line when running the program. There are 3 built in categories entered in the main: Lower_Vowels, Lowercase_Consonants, and Letters. The user must enter a category name and a list of characters for each category. If too few arguments are entered (no categories added, characters entered without a category name, or a category name entered but no characters), the program will provide an error message and exit. If no arguments are entered, the program will provide an error message and exit.
+Case Folding: The user can specify to include upper and lower case in a category by starting the character specification with ‘^’. If ‘^’ is not the first character in the category, the program will count it as a normal character and will not assume the user wants to include upper- and lower-case characters.
+Ranges: If the user wants to include a range, such as A through Z or 0 through 9, they can use a ‘-‘ to indicate this: a-z, 0-9, etc. Multiple ranges can be entered and should be on one line, with no spaces or commas in the format of: ‘a-z0-9’. A user can combine case folding and ranges, but must indicate case folding first. For example: ‘^a-z’ will return the upper and lower case ranges for a-z. A user cannot use ‘-‘ as the first or last character if they wish to include a range in the category. When entered as the first or last character of a category, ‘-‘ will be counted as a character and will not indicate a range.
+
+Makefiles:
+The user can use “make” which calls GNUmakefile. 
+
+Files:
+This program includes the following files:
+•	Hw5: (this is the main), 
+o	Initiates built in categories of Chrcat and adds them to a list “cc1”
+o	Takes the categories entered via command line arguments and adds to a new list of Chrcats called “cc2”
+o	Allows the user to enter characters to the command line to compare to categories until they exit via CTRL-D or enter
+o	Calls print function upon completion to print all categories and count information
+o	Frees memory
+•	ChrCats.c: 
+o	This file creates a list of Chrcats based on the built in categories and the user categories
+o	Works with Chrcat.c to create a single instance of a Chrcat, then adds it to the list in Chrcats.c
+•	ChrCats.h: 
+o	This file is visible from hw5.c and ChrCats.c and defines all extern methods
+o	Includes tydef void* Chrcats that is used from main to create cc1 and cc2
+•	Chrcat.c
+o	This file creates a single instance of a chrcat and includes all of the code to do counts, get the characters, etc.
+o	Visible from Chrcats.c
+•	Chrcat.h
+o	This file creates the struct of name, characters, and count and the useful functions including:
+	getCharacters
+	countMatch
+	printString
+•	Utilities.c, Utilities.h, List.c, List.h, error.h
+o	Utilities contains generic methods that can be reused for other programs, including:
+	getInput (returns user entered input and length of the input entered)
+	mallocError (provides error message if malloc fails)
+	getLength (returns the length of a string)
+	toLower (converts a character to lower case)
+o	List contains the struct Pair to create a list as well as these functions:
+	Cons (concatenates a list of items)
+	Car (returns the first item in the list)
+	Cdr (advances to the next item in the list)
+	FreeList (frees the list container(
+	Freedata (frees the data from the list)
+o	Error
+	WARN (allows warnings that are shown to the user)
+	ERROR (allows errors that will exit the program)
