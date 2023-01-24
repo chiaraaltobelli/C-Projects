@@ -15,3 +15,14 @@ doc/*.txt
 
 # ignore all .pdf files in the doc/ directory and any of its subdirectories
 doc/**/*.pdf
+
+#bin
+a.out
+
+#txt
+.txt~
+.txt.un~
+
+#md
+.md~
+.md.un
