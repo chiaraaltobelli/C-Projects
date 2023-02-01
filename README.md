@@ -1,4 +1,4 @@
-# C Projects
+# C
 
 ### Description
-This file contains a list of all C projects created by Chiara Altobelli.
+This repository contains all C projects created by Chiara Altobelli.
