@@ -1,4 +1,4 @@
-###C Projects
+# C Projects
 
-###Description
+### Description
 This file contains a list of all C projects created by Chiara Altobelli.
